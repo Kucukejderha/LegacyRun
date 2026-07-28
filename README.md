@@ -2,6 +2,14 @@
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 
+## Hazır kurulum paketi
+
+Windows kurulum dosyasını doğrudan indirin:
+
+[LegacyRun-3.3.0.msi](https://github.com/Kucukejderha/LegacyRun/raw/refs/heads/main/LegacyRun-3.3.0.msi)
+
+SHA-256: `EE13E651357A552A12774B3DD061416F4A34C81B415E9A3BC936A28AE0874401`
+
 LegacyRun; domaine bağlı veya bağımsız Windows bilgisayarlarında, yalnızca
 yönetici tarafından onaylanan eski uygulamaları standart kullanıcıların her
 seferinde yönetici parolası girmeden çalıştırmasını sağlayan bir Windows
@@ -150,6 +158,7 @@ Windows Ayarları > Uygulamalar bölümünden LegacyRun'ı kaldırın veya:
 
 ```bat
 msiexec /x LegacyRun-3.3.0.msi
+```
 
 ## Lisans
 
@@ -158,7 +167,6 @@ Copyright (C) 2026 LegacyRun contributors.
 LegacyRun, **GNU Affero General Public License v3.0**
 (`AGPL-3.0-only`) altında yayımlanır. Tam koşullar için [LICENSE](LICENSE)
 dosyasına bakın. Program hiçbir garanti verilmeden sunulur.
-```
 
 Güvenlik nedeniyle MSI kaldırma işlemi uygulama izin listesini ve kimlik
 bilgilerini otomatik silmez. Tam temizlik gerekiyorsa yönetici olarak şu kayıt
