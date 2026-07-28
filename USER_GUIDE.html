@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LegacyRun Kullanıcı Kılavuzu</title>
+  <style>
+    body { font: 16px/1.55 "Segoe UI", Arial, sans-serif; color: #202124;
+      max-width: 900px; margin: 36px auto; padding: 0 24px 60px; }
+    h1, h2 { color: #17365d; } h1 { border-bottom: 2px solid #d6e2f0; padding-bottom: 12px; }
+    code { background: #f2f4f7; padding: 2px 5px; border-radius: 3px; }
+    .note { background: #fff6d8; border-left: 4px solid #e1a900; padding: 12px 16px; }
+    .danger { background: #fdeaea; border-left: 4px solid #c62828; padding: 12px 16px; }
+    li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <h1>LegacyRun Kullanıcı Kılavuzu</h1>
+  <p>LegacyRun, yönetici tarafından onaylanan Windows uygulamalarını kayıtlı
+  bir domain veya yerel hesapla, her açılışta parola sormadan çalıştırır.</p>
+
+  <h2>1. İlk yapılandırma</h2>
+  <ol>
+    <li>Başlat menüsünden <strong>LegacyRun Yönetimi</strong> uygulamasını açın.</li>
+    <li><strong>Hesap…</strong> düğmesine basın.</li>
+    <li>Hesabı <code>DOMAIN\kullanıcı</code> biçiminde ve parolasıyla girin.</li>
+    <li>Hesap doğrulandıktan sonra parola Windows DPAPI ile mevcut kullanıcı
+    profiline bağlı olarak şifrelenir.</li>
+  </ol>
+  <div class="danger"><strong>Güvenlik:</strong> Domain Admin yerine yalnızca
+  gerekli uygulama ve kaynaklara erişebilen ayrı bir çalıştırma hesabı kullanın.</div>
+
+  <h2>2. Uygulama ekleme</h2>
+  <ol>
+    <li><strong>Ekle…</strong> düğmesine basın ve uygulamanın <code>.exe</code>
+    dosyasını seçin.</li>
+    <li>Windows yönetici onayı isterse onaylayın.</li>
+    <li>LegacyRun dosyanın SHA-256 özetini kaydeder. Dosya sonradan değişirse
+    çalıştırma engellenir; uygulamayı kaldırıp yeniden ekleyin.</li>
+  </ol>
+
+  <h2>3. Uygulama çalıştırma</h2>
+  <p>Listeden uygulamayı seçip <strong>Başlat</strong> düğmesine basın veya
+  uygulama satırına çift tıklayın.</p>
+
+  <h2>4. Doğrudan masaüstü kısayolu</h2>
+  <ol>
+    <li>Listeden uygulamayı seçin.</li>
+    <li><strong>Masaüstü kısayolu</strong> düğmesine basın.</li>
+    <li>Oluşan kısayol hedef uygulamanın simgesini kullanır ve LegacyRun
+    penceresini göstermeden güvenlik kontrollerini uygulayıp programı açar.</li>
+  </ol>
+
+  <h2>5. Uygulama kaldırma ve yenileme</h2>
+  <p><strong>Kaldır</strong>, seçili kaydı izin listesinden siler.
+  <strong>Yenile</strong>, makine izin listesini yeniden okur. Bu işlemler
+  hedef program dosyasını bilgisayardan silmez.</p>
+
+  <h2>6. Hesap veya parola değişikliği</h2>
+  <p>Domain hesabının parolası değiştiğinde <strong>Hesap…</strong> üzerinden
+  yeni parolayı tekrar kaydedin.</p>
+
+  <h2>7. Günlük ve sorun giderme</h2>
+  <p>Çalıştırma günlüğü:</p>
+  <p><code>%LOCALAPPDATA%\LegacyRun\LegacyRun.log</code></p>
+  <ul>
+    <li>“Hesap doğrulanamadı”: domain, kullanıcı adı veya parolayı kontrol edin.</li>
+    <li>“Dosya değişmiş”: uygulamayı izin listesinden kaldırıp tekrar ekleyin.</li>
+    <li>Uygulama açılmıyorsa hedef programı aynı hesapla doğrudan çalıştırarak
+    kendi bağımlılıklarını kontrol edin.</li>
+  </ul>
+
+  <h2>8. Lisans</h2>
+  <p>LegacyRun, GNU Affero Genel Kamu Lisansı Sürüm 3
+  (<strong>GNU AGPL v3.0</strong>) altında özgür yazılımdır. Tam metin kurulum
+  klasöründeki <code>LICENSE</code> dosyasındadır. Yazılım hiçbir garanti
+  verilmeden sunulur.</p>
+</body>
+</html>
