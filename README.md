@@ -1,4 +1,4 @@
-# LegacyRun 3.3
+# ASCOS LegacyRun 3.5
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 
@@ -6,11 +6,11 @@
 
 Windows kurulum dosyasını doğrudan indirin:
 
-[LegacyRun-3.3.0.msi](https://github.com/Kucukejderha/LegacyRun/raw/refs/heads/main/LegacyRun-3.3.0.msi)
+[ASCOS-LegacyRun-3.5.0.msi](https://github.com/Kucukejderha/LegacyRun/raw/refs/heads/main/ASCOS-LegacyRun-3.5.0.msi)
 
-SHA-256: `EE13E651357A552A12774B3DD061416F4A34C81B415E9A3BC936A28AE0874401`
+SHA-256: `B91D3B5787758C5F76799200389D0574F0B1601E42DBCE9EA279CF84E15EC9F6`
 
-LegacyRun; domaine bağlı veya bağımsız Windows bilgisayarlarında, yalnızca
+ASCOS LegacyRun; domaine bağlı veya bağımsız Windows bilgisayarlarında, yalnızca
 yönetici tarafından onaylanan eski uygulamaları standart kullanıcıların her
 seferinde yönetici parolası girmeden çalıştırmasını sağlayan bir Windows
 masaüstü uygulamasıdır.
@@ -31,18 +31,19 @@ kurulumu gerektirmez. Windows 10 1507 ile gelen .NET Framework 4.6 üzerinde
 - `LegacyRun.Admin.exe`: Kullanıcının gördüğü tek yönetim ve başlatma ekranı.
 - `LegacyRun.exe`: Yalnızca uygulama kısayollarının kullandığı görünmez çalıştırıcı.
 - `Installer.wxs`: WiX Toolset MSI tanımı.
+- Yönetim ekranı ASCOS PrintHub ile aynı kurumsal renk ve yerleşim dilini kullanır.
 
 ## Güvenlik modeli
 
-1. Domain, kullanıcı adı ve parola yalnızca LegacyRun Yönetimi ekranında girilir.
+1. Domain, kullanıcı adı ve parola yalnızca ASCOS LegacyRun Yönetimi ekranında girilir.
 2. Hesap `LogonUser` ile kaydedilmeden önce doğrulanır.
 3. Parola Windows DPAPI `CurrentUser` kapsamıyla şifrelenir.
 4. Şifreli veri `HKCU\SOFTWARE\LegacyRun\Settings` altında saklanır.
-6. Parola hiçbir loga, komut satırına veya MSI özelliğine yazılmaz.
-7. Launcher yalnızca yönetici tarafından HKLM izin listesine eklenen yolları
+5. Parola hiçbir loga, komut satırına veya MSI özelliğine yazılmaz.
+6. Launcher yalnızca yönetici tarafından HKLM izin listesine eklenen yolları
    çalıştırır.
-8. Her uygulama çalıştırılmadan hemen önce SHA-256 ile doğrulanır.
-9. Komut kabukları, script host'ları ve yaygın yetki aşma araçları yönetim
+7. Her uygulama çalıştırılmadan hemen önce SHA-256 ile doğrulanır.
+8. Komut kabukları, script host'ları ve yaygın yetki aşma araçları yönetim
    ekranında engellenir.
 
 > Standart kullanıcı kendi oturumunda kullanılan kimlik bilgisini süreç
@@ -51,7 +52,7 @@ kurulumu gerektirmez. Windows 10 1507 ile gelen .NET Framework 4.6 üzerinde
 
 ## Çalıştırma mekanizması
 
-LegacyRun 3.0 servis kullanmaz. Program doğrudan etkileşimli kullanıcı
+ASCOS LegacyRun 3.5 servis kullanmaz. Program doğrudan etkileşimli kullanıcı
 oturumundan `ProcessStartInfo` ile başlatılır. `UseShellExecute=false`,
 `Domain`, `UserName`, salt-okunur `SecureString Password`,
 `LoadUserProfile=true` ve uygulamanın kendi klasörü çalışma dizini olarak
@@ -86,13 +87,13 @@ set WIX=C:\Tools\wix314
 build-msi.cmd
 ```
 
-`LegacyRun-3.3.0.msi` dosyası `dist` altında oluşturulur.
+`ASCOS-LegacyRun-3.5.0.msi` dosyası `dist` altında oluşturulur.
 
 ## Manuel kurulum
 
-1. `LegacyRun-3.3.0.msi` dosyasına çift tıklayın.
+1. `ASCOS-LegacyRun-3.5.0.msi` dosyasına çift tıklayın.
 2. Windows UAC ekranında yönetici onayı verin.
-3. **LegacyRun Yönetimi** ekranında **Hesap...** ile `DOMAIN\kullanıcı` ve
+3. **ASCOS LegacyRun Yönetimi** ekranında **Hesap...** ile `DOMAIN\kullanıcı` ve
    parolayı bir kez kaydedin.
 4. Aynı ekranda **Ekle...** ile çalıştırılacak `.exe` dosyalarını onaylayın.
 5. Uygulamayı seçip **Başlat** düğmesini kullanın veya uygulamaya özel masaüstü
@@ -100,7 +101,7 @@ build-msi.cmd
 
 ## Uygulamaya özel masaüstü kısayolu
 
-1. Tek ana ekran olan **LegacyRun Yönetimi** uygulamasını açın.
+1. Tek ana ekran olan **ASCOS LegacyRun Yönetimi** uygulamasını açın.
 2. İzin listesinden bir uygulama seçin.
 3. **Masaüstü kısayolu** düğmesine basın.
 
@@ -111,7 +112,7 @@ kullanır. Kısayol gerçekte şu çağrıyı yapar:
 LegacyRun.exe --launch <uygulama-kimliği>
 ```
 
-Kullanıcı kısayola çift tıkladığında LegacyRun ana penceresi gösterilmez.
+Kullanıcı kısayola çift tıkladığında ASCOS LegacyRun ana penceresi gösterilmez.
 İzin listesi ve SHA-256 doğrulamasından sonra hedef uygulama kayıtlı hesapla
 doğrudan başlatılır.
 
@@ -126,7 +127,7 @@ yolundan yeni paket ekleyip **Assigned** seçin. Paket `perMachine` MSI'dır.
 
 Kimlik bilgilerini MSI komut satırında vermeyin; MSI özellikleri ve dağıtım
 logları parolayı açığa çıkarabilir. İlk hesap yapılandırmasını hedef bilgisayarda
-LegacyRun Yönetimi ile yapın veya kurumunuza özel güvenli bir provisioning
+ASCOS LegacyRun Yönetimi ile yapın veya kurumunuza özel güvenli bir provisioning
 süreci kullanın.
 
 ## Güncelleme
@@ -154,17 +155,17 @@ PID ve erken çıkış kodunu içerir. Parola içermez. Dosya 2 MB olduğunda
 
 ## Kaldırma
 
-Windows Ayarları > Uygulamalar bölümünden LegacyRun'ı kaldırın veya:
+Windows Ayarları > Uygulamalar bölümünden ASCOS LegacyRun'ı kaldırın veya:
 
 ```bat
-msiexec /x LegacyRun-3.3.0.msi
+msiexec /x ASCOS-LegacyRun-3.5.0.msi
 ```
 
 ## Lisans
 
-Copyright (C) 2026 LegacyRun contributors.
+Copyright (C) 2026 ASCOS LegacyRun contributors.
 
-LegacyRun, **GNU Affero General Public License v3.0**
+ASCOS LegacyRun, **GNU Affero General Public License v3.0**
 (`AGPL-3.0-only`) altında yayımlanır. Tam koşullar için [LICENSE](LICENSE)
 dosyasına bakın. Program hiçbir garanti verilmeden sunulur.
 

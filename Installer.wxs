@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <Product Id="*" Name="LegacyRun" Language="1055" Codepage="1254"
-           Version="3.3.0" Manufacturer="LegacyRun"
+  <Product Id="*" Name="ASCOS LegacyRun" Language="1055" Codepage="1254"
+           Version="3.5.0" Manufacturer="Rota Bilişim Hizmetleri"
            UpgradeCode="{5DDAEB5C-B345-4D5E-A9E7-C20C41D67F70}">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"
              InstallPrivileges="elevated" Platform="x86"
-             Description="Onaylı uygulamaları parola sormadan yönetici yetkisiyle çalıştırır." />
+             Description="Onaylı uygulamaları kayıtlı yönetici hesabıyla güvenli biçimde çalıştırır." />
 
-    <MajorUpgrade DowngradeErrorMessage="LegacyRun'ın daha yeni bir sürümü zaten kurulu."
+    <MajorUpgrade DowngradeErrorMessage="ASCOS LegacyRun'ın daha yeni bir sürümü zaten kurulu."
                   Schedule="afterInstallInitialize"
                   AllowSameVersionUpgrades="yes" />
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
     <Property Id="ARPNOREPAIR" Value="1" />
     <Property Id="MSIFASTINSTALL" Value="1" />
+    <Property Id="ARPPRODUCTICON" Value="AscosLegacyRunIcon" />
+    <Icon Id="AscosLegacyRunIcon" SourceFile="ASCOS-LegacyRun.ico" />
 
-    <Condition Message="LegacyRun bu Windows sürümünde çalışmaz.">
+    <Condition Message="ASCOS LegacyRun bu Windows sürümünde çalışmaz.">
       Installed OR VersionNT &gt;= 603
     </Condition>
 
@@ -28,18 +30,19 @@
           <Component Id="AdminComponent" Guid="{A59B3E70-161E-479B-BD57-9377C066B382}">
             <File Id="AdminExe" Source="dist\LegacyRun.Admin.exe" KeyPath="yes">
               <Shortcut Id="AdminStartShortcut" Directory="ProgramMenuFolder"
-                        Name="LegacyRun Yönetimi" WorkingDirectory="INSTALLFOLDER"
-                        Advertise="no" />
+                        Name="ASCOS LegacyRun Yönetimi" WorkingDirectory="INSTALLFOLDER"
+                        Icon="AscosLegacyRunIcon" IconIndex="0" Advertise="no" />
             </File>
             <File Id="UserGuide" Source="dist\USER_GUIDE.html" />
             <File Id="AgplLicense" Source="dist\LICENSE" />
+            <File Id="ProductLogo" Source="dist\ASCOS-LegacyRun.png" />
           </Component>
         </Directory>
       </Directory>
       <Directory Id="ProgramMenuFolder" />
     </Directory>
 
-    <Feature Id="Complete" Title="LegacyRun" Level="1" Absent="disallow">
+    <Feature Id="Complete" Title="ASCOS LegacyRun" Level="1" Absent="disallow">
       <ComponentRef Id="LauncherComponent" />
       <ComponentRef Id="AdminComponent" />
     </Feature>

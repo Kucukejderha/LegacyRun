@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2026 LegacyRun contributors
+// Copyright (C) 2026 ASCOS LegacyRun contributors
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -10,6 +10,13 @@ using Microsoft.Win32;
 
 namespace LegacyRun
 {
+    internal static class ProductInfo
+    {
+        internal const string DisplayName = "ASCOS LegacyRun";
+        internal const string ManagementTitle = "ASCOS LegacyRun Yönetimi";
+        internal const string Version = "3.5.0";
+    }
+
     internal static class Common
     {
         internal const string ServiceName = "LegacyRunService";

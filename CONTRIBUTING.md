@@ -1,4 +1,4 @@
-# LegacyRun'a Katkıda Bulunma
+# ASCOS LegacyRun'a Katkıda Bulunma
 
 Katkılar GNU AGPL v3.0 koşulları altında kabul edilir.
 

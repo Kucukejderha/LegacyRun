@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2026 LegacyRun contributors
+// Copyright (C) 2026 ASCOS LegacyRun contributors
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,7 +25,8 @@ namespace LegacyRun
         internal LauncherForm(string directId)
         {
             directLaunchId = directId;
-            Text = "LegacyRun";
+            Text = ProductInfo.DisplayName;
+            try { Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath); } catch { }
             Font = new Font("Segoe UI", 9F);
             StartPosition = FormStartPosition.CenterScreen;
             ClientSize = new Size(520, 330);
@@ -67,7 +68,7 @@ namespace LegacyRun
                         });
                         if (target == null)
                             MessageBox.Show("Kısayoldaki uygulama artık izin listesinde değil.",
-                                "LegacyRun", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                ProductInfo.DisplayName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         else LaunchApplication(target);
                         Close();
                     }));
@@ -145,7 +146,7 @@ namespace LegacyRun
             catch (Exception ex)
             {
                 Log("Launch failed for " + app.Path + ": " + ex);
-                MessageBox.Show("Başlatma başarısız.\n\n" + ex.Message, "LegacyRun",
+                MessageBox.Show("Başlatma başarısız.\n\n" + ex.Message, ProductInfo.DisplayName,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally { password = null; }
@@ -164,7 +165,7 @@ namespace LegacyRun
                     MessageBox.Show("Hesap doğrulanamadı.\n\n" +
                         new System.ComponentModel.Win32Exception(
                             System.Runtime.InteropServices.Marshal.GetLastWin32Error()).Message,
-                        "LegacyRun", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ProductInfo.DisplayName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 NativeLogon.CloseHandle(token);
